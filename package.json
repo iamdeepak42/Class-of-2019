@@ -1,0 +1,29 @@
+{
+  "name": "class-of-2019",
+  "version": "1.0.0",
+  "description": "A web app to show the stand and stand abilities of class of 2019",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamdeepak42/Class-of-2019.git"
+  },
+  "keywords": [
+    "jojo",
+    "2019",
+    "ce",
+    "kothi"
+  ],
+  "author": "Sack\u001b[D\u001b[D\u001b[D\u001b[DPockanssack\u001b[D\u001b[D\u001b[D\u001b[d",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamdeepak42/Class-of-2019/issues"
+  },
+  "homepage": "https://github.com/iamdeepak42/Class-of-2019#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.0"
+  }
+}
