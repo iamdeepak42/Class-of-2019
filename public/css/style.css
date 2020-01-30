@@ -6,17 +6,17 @@
 
 @font-face{
     font-family: popLight;
-    src: url(/public/fonts/Poppins-Light.ttf);
+    src: url(/fonts/Poppins-Light.ttf);
 }
 
 @font-face{
     font-family: popRegular;
-    src: url(/public/fonts/Poppins-Regular.ttf);
+    src: url(/fonts/Poppins-Regular.ttf);
 }
 
 @font-face{
     font-family: popRegular;
-    src: url(/public/fonts/Poppins-Medium.ttf);
+    src: url(/fonts/Poppins-Medium.ttf);
 }
 
 body{
