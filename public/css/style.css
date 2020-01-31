@@ -6,17 +6,17 @@
 
 @font-face{
     font-family: popLight;
-    src: url(/fonts/Poppins-Light.ttf);
+    src: url(/public/fonts/Poppins-Light.ttf);
 }
 
 @font-face{
     font-family: popRegular;
-    src: url(/fonts/Poppins-Regular.ttf);
+    src: url(/public/fonts/Poppins-Regular.ttf);
 }
 
 @font-face{
     font-family: popRegular;
-    src: url(/fonts/Poppins-Medium.ttf);
+    src: url(/public/fonts/Poppins-Medium.ttf);
 }
 
 body{
@@ -222,3 +222,55 @@ nav{
     cursor: pointer;
     
 }
+
+.baja-img{
+    height: 500px;
+    stroke: white;
+  
+    
+}
+.container-for-both{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+.form-container{
+    display: flex;
+  
+  
+    grid-column: 2/3;
+   
+
+}
+
+.form-fill{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+}
+
+.heading-form{
+    color: white;
+    font-size: 42px;
+    text-align: center;
+}
+
+.form-elements{
+    font-size: 36px;
+    text-align: center;
+}
+
+form{
+    border: 1px d white;
+    height: 500px;
+    padding: 25px 25px;
+    background-image: url('/public/Assets/batare.jpg');
+    opacity: 0.9;
+    color: black;
+    
+}
+
+
