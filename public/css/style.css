@@ -253,14 +253,24 @@ nav{
 }
 
 .heading-form{
-    color: white;
+    color: black;
     font-size: 42px;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .form-elements{
     font-size: 36px;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;;
+    align-items: center;
+}
+
+.form-elements input{
+    height: 2rem;
+    width: 60%;
+    padding: 0.7rem
 }
 
 form{
@@ -274,3 +284,38 @@ form{
 }
 
 
+.text-decoration-none{
+    text-decoration: none !important;
+}
+
+
+
+
+.submit-btn{
+
+    margin-top: 3rem;
+
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.text-center{
+    text-align: center;
+}

@@ -6,7 +6,7 @@ const hbs = require('hbs')
 const app = express()
 
 // Define paths for Express config
-const publicDirectoryPath = path.join(__dirname, '')
+const publicDirectoryPath = path.join(__dirname, '../')
 const viewsPath = path.join(__dirname, '../public/hbs')
 const partialsPath = path.join(__dirname, '../public/hbs/partials')
 
@@ -20,6 +20,12 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('friends', {
+   
+    })
+})
+
+app.get('/form', (req, res) => {
+    res.render('form', {
    
     })
 })

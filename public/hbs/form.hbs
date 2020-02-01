@@ -3,15 +3,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="/public/css/style.css">
     <title>Document</title>
+    
     
 </head>
 <body>
     <div class="friends">
         <header>
             <nav>
-                <h3 class="logo">FRIENDS</h3>
+                <a href="/" class="text-decoration-none"><h3 class="logo ">FRIENDS</h3></a>
                 
                 <svg class= "menu" width="43" height="23" viewBox="0 0 43 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line y1="1.5" x2="43" y2="1.5" stroke="white" stroke-width="3"/>
@@ -38,11 +40,11 @@
                 <div class="baja-container">
                     <img class="baja-img" src="/public/Assets/bs.jpg" alt="" style="fill: white;">
                 </div>
-                <form action="">
+                <form action="/friends">
                     <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
                     <div class="form-elements">
                         <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="firstname">
+                        <input type="text" id="fname" name="firstname" placeholder="Your First name">
                         
                     </div>
                     <div class="form-elements">
@@ -51,14 +53,15 @@
                         
                     </div>
                     <div class="form-elements">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        <label for="lname">Stand Name</label>
+                        <input type="text" id="stand" name="lastname" placeholder="Your stand ability..">
                         
                     </div>
                     
                     
-                    
-                    <input type="submit" value="Submit">
+                    <div class="text-center">
+                        <input type="submit" value="Submit" class="submit-btn">
+                    </div>
                 </form>
             </main>
             
@@ -101,8 +104,11 @@
             </main> -->
         </header>
     </div>
+    {{!-- <script language="javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script src="/public/js/app.js"></script>
+
 </body>
 </html>
