@@ -1,9 +1,17 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+require('./db/mongoose')
+
+const friendRouter = require('./routers/friend')
+const port = process.env.port || 3000
 
 
 const app = express()
+app.use(express.json())
+
+app.use(friendRouter)
+
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../')
@@ -40,6 +48,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port', port)
 })
