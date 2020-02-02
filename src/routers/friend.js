@@ -27,7 +27,7 @@ router.get('/friends/:id', async(req, res)=>{
 
 
 router.post('/friends', async(req,res)=>{
-    debugger;
+    console.log(req.body)
     const friend = new Friend(req.body)
     try{
         await friend.save()

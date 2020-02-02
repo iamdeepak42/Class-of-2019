@@ -40,7 +40,7 @@
                 <div class="baja-container">
                     <img class="baja-img" src="/public/Assets/bs.jpg" alt="" style="fill: white;">
                 </div>
-                <form action="/friends">
+                <form action="/friends" method="POST" id="myForm" enctype='application/json'>
                     <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
                     <div class="form-elements">
                         <label for="fname">First Name</label>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-elements">
                         <label for="lname">Stand Name</label>
-                        <input type="text" id="stand" name="lastname" placeholder="Your stand ability..">
+                        <input type="text" id="stand" name="stand" placeholder="Your stand ability..">
                         
                     </div>
                     
@@ -109,6 +109,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script src="/public/js/app.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 </html>
+
+<script>
+    document.querySelector('#myForm').addEventListener('submit',e=>{
+        e.preventDefault();
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: '/friends',
+            data: JSON.stringify({
+                firstname:  document.querySelector('#fname').value, 
+                lastname:  document.querySelector('#lname').value,
+                stand:  document.querySelector('#stand').value
+            }),
+            success: console.log('success'),
+            dataType: "json"
+        });
+    })
+    
+
+  
+</script>

@@ -26,10 +26,17 @@ hbs.registerPartials(partialsPath)
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
-app.get('', (req, res) => {
-    res.render('friends', {
-   
-    })
+app.get('', async (req, res) => {
+    try{
+        const friends = await Friend.find({})
+        
+        res.render('friends', {
+            friends
+        })
+    }catch(e){
+        res.status(500).send(e)
+    }
+    
 })
 
 app.get('/form', (req, res) => {
