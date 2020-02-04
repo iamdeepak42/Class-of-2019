@@ -1,12 +1,20 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+require('./db/mongoose')
+
+const friendRouter = require('./routers/friend')
+const port = process.env.port || 3000
 
 
 const app = express()
+app.use(express.json())
+
+app.use(friendRouter)
+
 
 // Define paths for Express config
-const publicDirectoryPath = path.join(__dirname, '')
+const publicDirectoryPath = path.join(__dirname, '../')
 const viewsPath = path.join(__dirname, '../public/hbs')
 const partialsPath = path.join(__dirname, '../public/hbs/partials')
 
@@ -18,8 +26,21 @@ hbs.registerPartials(partialsPath)
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
-app.get('', (req, res) => {
-    res.render('friends', {
+app.get('', async (req, res) => {
+    try{
+        const friends = await Friend.find({})
+        
+        res.render('friends', {
+            friends
+        })
+    }catch(e){
+        res.status(500).send(e)
+    }
+    
+})
+
+app.get('/form', (req, res) => {
+    res.render('form', {
    
     })
 })
@@ -34,6 +55,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port', port)
 })
