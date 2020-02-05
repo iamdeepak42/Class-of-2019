@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
-const hbs = require('express-handlebars')
+const ejs = require('ejs')
+const expressLayouts = require('express-ejs-layouts')
+
 require('./db/mongoose')
 
 const Friend = require('./models/friend')
@@ -18,27 +20,29 @@ app.use(friendRouter)
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../')
 const viewsPath = path.join(__dirname, '../public/views')
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 
-app.engine('hbs', hbs({
-    extname: 'hbs', 
-    defaultLayout: 'layout', 
-    layoutsDir: viewsPath + '/layouts',
-    partialsDir: viewsPath + '/partials'
-}))
+// app.engine('ejs', ejs({
+//     extname: 'ejs', 
+//     defaultLayout: 'layout', 
+//     layoutsDir: viewsPath + '/layouts',
+//     partialsDir: viewsPath + '/partials'
+// }))
 
 // Setup handlebars engine and views location
 app.set('views', viewsPath)
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
+app.use(expressLayouts)
+app.set('layout', 'layouts/layout');
 
 app.get('', async (req, res) => {
     try{
         const friends = await Friend.find({})
-        debugger;
         res.render('friends', {
-            friends
+            friends,
+            classArray: ['photographer', 'chef', 'cook']
         })
     }catch(e){
         res.status(500).send(e)

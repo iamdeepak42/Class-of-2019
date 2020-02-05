@@ -16,10 +16,6 @@ const Friend = mongoose.model('Friend',{
         type: String,
         trim: true,
         required: true
-    }, 
-    job:{
-        type: String,
-        trim: true
     }
 })
 

@@ -25,11 +25,12 @@
                     </div>
                 </nav>
                 <main>
-                    {{# each friends }}
-                        <section class="page {{this.job}}">
+                        
+                    <% friends.forEach((friend, i)=>{ %>
+                        <section class="page <%= classArray[i] %>">
                             <div class="details">
-                                <h1>{{ this.firstname}} {{ this.lastname}}</h1>
-                                <h2>{{ this.stand}}</h2>
+                                <h1><%= friend.firstname %> <%= friend.lastname %></h1>
+                                <h2><%= friend.stand %></h2>
                                 <p>09-9-21</p>
                             </div>
                             <div class="hero">
@@ -37,9 +38,9 @@
                                 <img class= "model-right"src="public/Assets/split-right.png" alt="split-right">
                             </div>
                         </section>
-                    {{/each}}
+                    <% }) %>
                     
-                    {{!-- <section class="page chef">
+                    <!-- <section class="page chef">
                         <div class="details">
                             <h1>Deepak Shrestha</h1>
                             <h2>photographer</h2>
@@ -64,7 +65,7 @@
                             
                         </div>
                     </section>
-                     --}}
+                      -->
                     
                     
                     <div class="pages">
@@ -93,4 +94,5 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+    <script src="public/js/app.js"></script>
     <script src="public/js/app.js"></script>
