@@ -1,4 +1,14 @@
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+    
+    
+</head>
+<body>
     <div class="friends">
         <header>
             <nav>
@@ -25,81 +35,53 @@
                     </div>
                 </div>
             </nav>
-            <main class="container-for-both">
-                <div class="baja-container">
-                    <img class="baja-img" src="/public/Assets/bs.jpg" alt="" style="fill: white;">
-                </div>
-                <form action="/friends" method="POST" id="myForm" enctype='application/json'>
-                    <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
-                    <div class="form-elements">
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your First name">
-                        
-                    </div>
-                    <div class="form-elements">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                        
-                    </div>
-                    <div class="form-elements">
-                        <label for="lname">Stand Name</label>
-                        <input type="text" id="stand" name="stand" placeholder="Your stand ability..">
-                        
-                    </div>
-                    
-                    
-                    <div class="text-center">
-                        <input type="submit" value="Submit" class="submit-btn">
-                    </div>
-                </form>
-            </main>
-            
-            <!-- <main class="maindiv">
-                <div class="form-container">
-                    <div class="baja-container">
-                        <img class="baja-img" src="/public/Assets/bs.svg" alt="">
-                    </div>
-                    
-                    <div>
-                        
-                        
-                        <form action="" class="form-fill">
-                            <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
-                            <div class="form-elements">
-                                <label for="fname">First Name</label>
-                                <input type="text" id="fname" name="firstname" placeholder="firstname">
-                                
-                            </div>
-                            <div class="form-elements">
-                                <label for="lname">Last Name</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                                
-                            </div>
-                            <div class="form-elements">
-                                <label for="lname">Last Name</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                                
-                            </div>
-                            
-                            
-                            
-                            <input type="submit" value="Submit">
-                        </form>
-                    </div>
-                    
-                    
-                    
-                </div>
-            </main> -->
         </header>
     </div>
-    {{!-- <script language="javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> --}}
+    <div class="container form-body">
+        <div id="baj-logo">
+            <img src="/public/Assets/bs.jpg" style="height: 125px;width:auto; float:right; margin-righ:25px;" alt="">
+        </div>
+        
+
+        <div class="leftbox">
+        </div>
+        <div class="rightbox">
+            <div class="profile">
+                <h1 style="color: rgba(43,55,96,1);">Personal Info</h1>
+                <h2>Title</h2>
+                <input type="text" class="no-outline" placeholder="Eg. Logic King, KUBH Snake">
+                <h2>Full Name</h2>
+                <input type="text" class="no-outline" placeholder="Reborn into a Bajgain">
+                <h2>Birthday</h2>
+                <input type="date" class="no-outline">
+                <h2>Gender</h2>
+                <select class="form-control" id="sel1">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                </select>
+                <h2>Email</h2>
+                <input type="email" class="no-outline" pattern=".+@globex.com" size="30" required>
+                <h2>Favourite Bajgain Tale </h2>
+                <textarea name="tales" id="tales" cols="30" rows="10"></textarea>
+                <div class="pledge">
+                    <button> I pledge to be a Bajgain Forever !</button>
+                </div>
+                
+              
+        
+            </div>
+        </div>
+            
+          
+    <script language="javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script src="/public/js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+</body>
+</html>
 
 <script>
     document.querySelector('#myForm').addEventListener('submit',e=>{

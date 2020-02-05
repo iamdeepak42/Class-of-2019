@@ -1,0 +1,123 @@
+
+    <div class="friends">
+        <header>
+            <nav>
+                <a href="/" class="text-decoration-none"><h3 class="logo ">FRIENDS</h3></a>
+                
+                <svg class= "menu" width="43" height="23" viewBox="0 0 43 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line y1="1.5" x2="43" y2="1.5" stroke="white" stroke-width="3"/>
+                    <line y1="11.5" x2="28" y2="11.5" stroke="white" stroke-width="3"/>
+                    <line y1="21.5" x2="16" y2="21.5" stroke="white" stroke-width="3"/>
+                </svg>
+                
+                <div class="nav-open">
+                    <div class="contact">
+                        <h3>Meet other bajgains !</h3>
+                    </div>
+                    <div class="social">
+                        <h3 style="padding-bottom: 25px;">Social</h3>
+                        <div class="social-links">
+                            <img src="/public/Assets/Instagram.svg" alt="">
+                            <img src="/public/Assets/Twitter.svg" alt="">
+                            <img src="/public/Assets/Facebook.svg" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav>
+            <main class="container-for-both">
+                <div class="baja-container">
+                    <img class="baja-img" src="/public/Assets/bs.jpg" alt="" style="fill: white;">
+                </div>
+                <form action="/friends" method="POST" id="myForm" enctype='application/json'>
+                    <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
+                    <div class="form-elements">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Your First name">
+                        
+                    </div>
+                    <div class="form-elements">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        
+                    </div>
+                    <div class="form-elements">
+                        <label for="lname">Stand Name</label>
+                        <input type="text" id="stand" name="stand" placeholder="Your stand ability..">
+                        
+                    </div>
+                    
+                    
+                    <div class="text-center">
+                        <input type="submit" value="Submit" class="submit-btn">
+                    </div>
+                </form>
+            </main>
+            
+            <!-- <main class="maindiv">
+                <div class="form-container">
+                    <div class="baja-container">
+                        <img class="baja-img" src="/public/Assets/bs.svg" alt="">
+                    </div>
+                    
+                    <div>
+                        
+                        
+                        <form action="" class="form-fill">
+                            <h2 class="heading-form">Apply To Become a Bajgain Now !</h2>
+                            <div class="form-elements">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="firstname" placeholder="firstname">
+                                
+                            </div>
+                            <div class="form-elements">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                                
+                            </div>
+                            <div class="form-elements">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                                
+                            </div>
+                            
+                            
+                            
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </main> -->
+        </header>
+    </div>
+    <script language="javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+    <script src="/public/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+<script>
+    document.querySelector('#myForm').addEventListener('submit',e=>{
+        e.preventDefault();
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: '/friends',
+            data: JSON.stringify({
+                firstname:  document.querySelector('#fname').value, 
+                lastname:  document.querySelector('#lname').value,
+                stand:  document.querySelector('#stand').value
+            }),
+            success: console.log('success'),
+            dataType: "json"
+        });
+    })
+    
+
+  
+</script>
