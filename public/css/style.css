@@ -223,54 +223,175 @@ nav{
     
 }
 
-.baja-img{
-    height: 500px;
-    stroke: white;
-  
+/* Styling for form  */
+
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,900|Montserrat|Roboto");
+.form-body {
+    background: radial-gradient(rgba(43,55,96,1),rgba(11,16,35,1));
+}
+.container {
+    background: #FFFFFF;
+    width: 65%;
+    height: 600px;
+    margin: 10% auto;
+    position: relative;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);
+  }
+
+
+  .form-logo {
+    float: right;
+    margin-right: 12px;
+    margin-top: 12px;
+    font-family: "Nunito Sans", sans-serif;
+    color: rgba(43,55,96,1);
+    font-weight: 900;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+  }
+
+  /* .CTA {
+    width: 80px;
+    height: 40px;
+    right: -20px;
+    bottom: 0;
+    margin-bottom: 90px;
+    position: absolute;
+    z-index: 1;
+    background: #7ED386;
+    font-size: 1em;
+    transform: rotate(-90deg);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+  } */
+
+
     
-}
-.container-for-both{
-    display: flex;
-    height: 90vh;
-    justify-content: center;
-    align-items: center;
-}
-.form-container{
-    display: flex;
+  .leftbox {
+    float: left;
+    top: -5%;
+    left: 5%;
+    position: absolute;
+    width: 15%;
+    height: 110%;
+    background: radial-gradient(rgba(43,55,96,1),rgba(11,16,35,1));
+    box-shadow: 3px 3px 10px rgba(119, 119, 119, 0.5);
+  }
   
   
-    grid-column: 2/3;
+  .rightbox {
+    float: right;
+    width: 60%;
+    height: 100%;
+  }
+
+
+  .form-body h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #7ED386;
+    font-size: 1em;
+    margin-top: 40px;
+    margin-bottom: 35px;
+  }
+  
+  .form-body h2 {
+    color: #777777;
+    font-family: "Roboto", sans-serif;
+    width: 80%;
+    text-transform: uppercase;
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin-left: 2px;
+  }
+
+  select,input {
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #3FB6A8, rgba(126, 211, 134, 0.5)) 1 0%;
+    border-top: 0;
+    width: 80%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.7em;
+    padding: 5px 0;
+  
    
+    }
 
+#tales{
+    width: 80%;
+    height: 65px;
+}
+.no-outline:focus {
+    outline: none;
+    }
+
+.form-body span {
+    font-size: 0.5em;
+    color: #777777;
+    }
+    
+.profile h1{
+    font-size: 2em;
 }
 
-.form-fill{
-    color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 500px;
+.profile h2{
+    font-size: 0.75em;
 }
 
-.heading-form{
+
+
+.text-decoration-none{
+    text-decoration: none !important;
+}
+
+.profile > *{
+    margin-top: 12px;
+}
+
+
+.submit-btn{
+
+    margin-top: 3rem;
+
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+
+.pledge button{
+    padding: 15px 15px;
+    margin-left: 10%;
+    background: radial-gradient(rgba(43,55,96,1),rgba(11,16,35,1));
     color: white;
-    font-size: 42px;
-    text-align: center;
-}
-
-.form-elements{
-    font-size: 36px;
-    text-align: center;
-}
-
-form{
-    border: 1px d white;
-    height: 500px;
-    padding: 25px 25px;
-    background-image: url('/public/Assets/batare.jpg');
-    opacity: 0.9;
-    color: black;
+    font-weight: bolder;
     
 }
 
-
+.pledge button:hover{
+    background: rgba(43,55,96,0.7);
+    color: black  ;
+    cursor: pointer;
+}
