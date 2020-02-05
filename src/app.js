@@ -56,6 +56,11 @@ app.get('/form', (req, res) => {
     })
 })
 
+app.get('/form2', (req, res) => {
+    res.render('form2', {
+   
+    })
+})
 
 
 app.get('*', (req, res) => {
