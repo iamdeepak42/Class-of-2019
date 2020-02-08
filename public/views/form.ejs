@@ -37,7 +37,7 @@
         <div class="leftbox">
         </div>
         <div class="rightbox">
-                <form action="/friends" method="POST" id="myForm" enctype="application/json" class="profile">
+                <form action="/friends" method="POST" id="myForm" enctype="multipart/form-data" class="profile">
 
                     <h1 style="color: rgba(43,55,96,1);">Personal Info</h1>
                     <h2>Title</h2>
@@ -53,7 +53,7 @@
                         <option>Others</option>
                     </select>
                     <h2>Email</h2>
-                    <input type = "email" name="email" class="no-outline" size="30" required id="email">
+                    <input type = "email" name="email" class="no-outline" size="30" id="email">
                     <h2>Favourite Bajgain Tale </h2>
                     <textarea name="tale" id="tales" cols="30" rows="10" id="tale"></textarea>
                     <input type="file" name="picture" accept="image/*" id="picture">
@@ -71,26 +71,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
         
 <script>
-    document.querySelector('#myForm').addEventListener('submit',async function (e) {
+    document.querySelector('#myForm').addEventListener('submit', async function (e) {
         e.preventDefault();
+        var form = new FormData($(this)[0]);
         $.ajax({
-            contentType: 'application/json',
-            type: "POST",
             url: '/friends',
-            data: JSON.stringify({
-                title:  document.querySelector('#title').value, 
-                fullname:  document.querySelector('#fname').value, 
-                birthday:  document.querySelector('#bdate').value,
-                gender:  document.querySelector('#sel1').value,
-                email:  document.querySelector('#email').value,
-                tale:  document.querySelector('#tales').value
-            }),
-            success: window.location.href = "/",
-            dataType: "json"
+            method: "POST",
+            dataType: 'json',
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(result){window.location.href = "/";},
+            error: function(er){console.log(er)}
         });
-
-        window.location.href = "/";
-      
 
     })
     
