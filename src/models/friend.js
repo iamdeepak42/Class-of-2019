@@ -39,7 +39,10 @@ const friendSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    picture:{
+    pictureLeft:{
+        type: Buffer
+    },
+    pictureRight:{
         type: Buffer
     }
 })

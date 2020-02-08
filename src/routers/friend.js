@@ -2,7 +2,7 @@ const express = require('express')
 const router = new express.Router()
 
 const multer = require('multer')
-const sharp = require('sharp')
+const Jimp = require('jimp')
 
 const Friend = require('../models/friend')
 
@@ -45,8 +45,13 @@ router.post('/friends', upload.single('picture'), async(req,res)=>{
     console.log(req.body)
     const friend = new Friend(req.body)
     try{
-        if (req.file)
-            friend.picture = await sharp(req.file.buffer).resize({width: 240, height: 320}).png().toBuffer()
+        if (req.file){
+            let img = await Jimp.read(req.file.buffer)
+            friend.pictureLeft = await img.quality(8).cover(240,320).crop(0,0,120,320).getBufferAsync(Jimp.MIME_PNG)
+            img = await Jimp.read(req.file.buffer)
+            friend.pictureRight = await img.quality(8).cover(240,320).crop(120,0,120,320).getBufferAsync(Jimp.MIME_PNG)
+             
+        } 
         await friend.save()
         res.status(201).send(friend)
     }catch(e){
@@ -73,15 +78,29 @@ router.patch('/friends/:id',async (req,res)=>{
     }
 })
 
-router.get('/friends/:id/picture', async (req, res)=>{
+router.get('/friends/:id/pictureleft', async (req, res)=>{
     try{
         const friend = await Friend.findById(req.params.id)
         console.log(friend)
-        if(!friend || !friend.picture){
+        if(!friend || !friend.pictureLeft){
             throw new Error('No image found')
         }
         res.set('Content-Type', 'image/png')
-        res.send(friend.picture)
+        res.send(friend.pictureLeft)
+    }catch(e){
+        res.status(404).send(e)
+    }
+})
+
+router.get('/friends/:id/pictureright', async (req, res)=>{
+    try{
+        const friend = await Friend.findById(req.params.id)
+        console.log(friend)
+        if(!friend || !friend.pictureRight){
+            throw new Error('No image found')
+        }
+        res.set('Content-Type', 'image/png')
+        res.send(friend.pictureRight)
     }catch(e){
         res.status(404).send(e)
     }
