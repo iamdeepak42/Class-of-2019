@@ -41,8 +41,7 @@ app.get('', async (req, res) => {
     try{
         const friends = await Friend.find({})
         res.render('friends', {
-            friends,
-            classArray: ['photographer', 'chef', 'cook']
+            friends
         })
     }catch(e){
         res.status(500).send(e)

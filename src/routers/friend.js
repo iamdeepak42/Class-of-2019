@@ -1,8 +1,14 @@
 const express = require('express')
 const router = new express.Router()
 
+const multer = require('multer')
 
 const Friend = require('../models/friend')
+
+const upload = multer({
+    dest: 'public/Assets/avatars'
+})
+
 
 router.get('/friends', async (req, res) =>{
     try{
@@ -33,6 +39,7 @@ router.post('/friends', async(req,res)=>{
         await friend.save()
         res.status(201).send(friend)
     }catch(e){
+        console.log(e)
         res.status(400).send(e)
     }
 })
@@ -53,6 +60,10 @@ router.patch('/friends/:id',async (req,res)=>{
     }catch(e){
         res.status(400).send(e)
     }
+})
+
+router.post('/friends/avatar', upload.single('avatar'), (req, res)=>{
+    res.send()
 })
 
 module.exports = router
