@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js -e hbs,js,css"
+    "dev": "nodemon src/app.js -e ejs,js,css"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,10 @@
     "express-ejs-layouts": "^2.5.0",
     "jquery": "^3.4.1",
     "mongoose": "^5.8.11",
-    "popper.js": "^1.16.1"
+    "multer": "^1.4.2",
+    "popper.js": "^1.16.1",
+    "sharp": "^0.24.0",
+    "validator": "^12.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

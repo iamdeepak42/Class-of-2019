@@ -34,7 +34,7 @@
                                 <p><%= friend.birthday.toUTCString().split(' ').splice(0,4).join(' ') %></p>
                             </div>
                             <div class="hero">
-                                <img class="model-left"src="public/Assets/split-left.png" alt="split-left">
+                                <img class="model-left"src=<%- `friends/${friend.id}/picture`%> alt="split-left">
                                 <img class= "model-right"src="public/Assets/split-right.png" alt="split-right">
                             </div>
                         </section>

@@ -37,25 +37,26 @@
         <div class="leftbox">
         </div>
         <div class="rightbox">
-                <form action="/friends" method="POST" id="myForm" enctype='application/json' class="profile">
+                <form action="/friends" method="POST" id="myForm" enctype="application/json" class="profile">
 
                     <h1 style="color: rgba(43,55,96,1);">Personal Info</h1>
                     <h2>Title</h2>
-                    <input type="text" class="no-outline" placeholder="Eg. Logic King, KUBH Snake" id="title">
+                    <input type="text" name="title" class="no-outline" placeholder="Eg. Logic King, KUBH Snake" id="title">
                     <h2>Full Name</h2>
-                    <input type="text" class="no-outline" placeholder="Reborn into a Bajgain" id="fname">
+                    <input type="text" name="fullname" class="no-outline" placeholder="Reborn into a Bajgain" id="fname">
                     <h2>Birthday</h2>
-                    <input type="date" class="no-outline" id="bdate">
+                    <input type="date" name="birthday" class="no-outline" id="bdate">
                     <h2>Gender</h2>
-                    <select class="form-control" id="sel1">
+                    <select class="form-control" id="sel1" name="gender">
                         <option>Male</option>
                         <option>Female</option>
                         <option>Others</option>
                     </select>
                     <h2>Email</h2>
-                    <input type = "email" class="no-outline" size="30" required id="email">
+                    <input type = "email" name="email" class="no-outline" size="30" required id="email">
                     <h2>Favourite Bajgain Tale </h2>
-                    <textarea name="tales" id="tales" cols="30" rows="10" id="tale"></textarea>
+                    <textarea name="tale" id="tales" cols="30" rows="10" id="tale"></textarea>
+                    <input type="file" name="picture" accept="image/*" id="picture">
                     <div class="pledge">
                         <button> I pledge to be a Bajgain Forever !</button>
                     </div>
@@ -70,7 +71,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
         
 <script>
-    document.querySelector('#myForm').addEventListener('submit',e=>{
+    document.querySelector('#myForm').addEventListener('submit',async function (e) {
         e.preventDefault();
         $.ajax({
             contentType: 'application/json',
@@ -87,7 +88,9 @@
             success: window.location.href = "/",
             dataType: "json"
         });
+
         window.location.href = "/";
+      
 
     })
     

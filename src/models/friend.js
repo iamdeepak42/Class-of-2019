@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const Friend = mongoose.model('Friend',{
+const friendSchema = new mongoose.Schema({
     fullname: {
         type: String,
         trim: true,
@@ -43,5 +43,15 @@ const Friend = mongoose.model('Friend',{
         type: Buffer
     }
 })
+
+friendSchema.methods.toJSON = function () {
+    const friend = this
+    const friendObject = friend.toObject();
+    
+    delete friendObject.picture
+    return friendObject
+}
+
+const Friend = mongoose.model('Friend', friendSchema)
 
 module.exports = Friend
