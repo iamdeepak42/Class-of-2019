@@ -2,44 +2,26 @@
 
     <div class="friends">
         <header>
-            <nav>
-                <a href="/" class="text-decoration-none"><h3 class="logo ">FRIENDS</h3></a>
-                
-                <svg class= "menu" width="43" height="23" viewBox="0 0 43 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line y1="1.5" x2="43" y2="1.5" stroke="white" stroke-width="3"/>
-                    <line y1="11.5" x2="28" y2="11.5" stroke="white" stroke-width="3"/>
-                    <line y1="21.5" x2="16" y2="21.5" stroke="white" stroke-width="3"/>
-                </svg>
-                
-                <div class="nav-open">
-                    <div class="contact">
-                        <h3>Meet other bajgains !</h3>
-                    </div>
-                    <div class="social">
-                        <h3 style="padding-bottom: 25px;">Social</h3>
-                        <div class="social-links">
-                            <img src="/public/Assets/Instagram.svg" alt="">
-                            <img src="/public/Assets/Twitter.svg" alt="">
-                            <img src="/public/Assets/Facebook.svg" alt="">
-                        </div>
-                        
-                    </div>
-                </div>
-            </nav>
-        </header>
+            <%- include('includes/nav.ejs') %>
+        </header>   
     </div>
     <div class="container form-body">
         <div id="baj-logo">
             <img src="/public/Assets/bs.jpg" style="height: 125px;width:auto; float:right;" alt="">
         </div>
-        
+    
 
         <div class="leftbox">
         </div>
         <div class="rightbox">
+            <a class="logout" href="/logout">
+                logout
+            </a>
                 <form action="/friends" method="POST" id="myForm" enctype="multipart/form-data" class="profile">
 
-                    <h1 style="color: rgba(43,55,96,1);">Personal Info</h1>
+                    <h1 style="color: rgba(43,55,96,1);"><% if(user){ %>
+                        <%=  user.name.charAt(0).toUpperCase() + user.name.slice(1); %>
+                    <% } %>'s Personal Info</h1>
                     <h2>Title</h2>
                     <input type="text" name="title" class="no-outline" placeholder="Eg. Logic King, KUBH Snake" id="title">
                     <h2>Full Name</h2>
@@ -60,6 +42,7 @@
                     <div class="pledge">
                         <button> I pledge to be a Bajgain Forever !</button>
                     </div>
+                    
                 </form>
               
         

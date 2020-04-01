@@ -1,20 +1,29 @@
 const path = require('path')
 const express = require('express')
-const ejs = require('ejs')
-const expressLayouts = require('express-ejs-layouts')
+const dotenv = require('dotenv');
+const expressLayouts = require('express-ejs-layouts');
+const cookieParser = require('cookie-parser');
+const authenticate = require('./middlewares/authenticate')
 
-require('./db/mongoose')
+dotenv.config({
+    path: path.join(__dirname,'/config/config.env') 
+})
 
-const Friend = require('./models/friend')
+require('./db/mongoose');
 
-const friendRouter = require('./routers/friend')
-const port = process.env.port || 3000
+const Friend = require('./models/friend');
+
+const friendRouter = require('./routers/friend');
+
+const app = express();
+
+app.use(cookieParser());
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(express.json());
 
 
-const app = express()
-app.use(express.json())
-
-app.use(friendRouter)
 
 
 // Define paths for Express config
@@ -37,7 +46,10 @@ app.use(express.static(publicDirectoryPath))
 app.use(expressLayouts)
 app.set('layout', 'layouts/layout');
 
-app.get('', async (req, res) => {
+
+app.use(friendRouter)
+
+app.get('/', async (req, res) => {
     try{
         const friends = await Friend.find({})
         res.render('friends', {
@@ -49,27 +61,58 @@ app.get('', async (req, res) => {
     
 })
 
-app.get('/form', (req, res) => {
+app.get('/form',authenticate, (req, res) => {
+    const user = req.loggedInUser;
     res.render('form', {
-   
+        user
     })
 })
 
 app.get('/form2', (req, res) => {
     res.render('form2', {
-   
+        
     })
 })
 
+app.get('/login',(req,res,next)=>{
+    res.render('login',{
+        errMsg:null
+    });
+})
 
-app.get('*', (req, res) => {
+app.get('/register',(req,res,next)=>{
+    res.render('register',{
+        errMsg:null
+    });
+})
+
+app.get('/forgot-password',(req,res,next)=>{
+    res.render('forgotPassword',{
+        msg: null
+    });
+})
+
+app.use(require('./routers/auth'));
+
+
+app.use((req, res) => {
     res.render('404', {
-        title: '404',
-        name: 'Andrew Mead',
-        errorMessage: 'Page not found.'
+        path: req.url
     })
 })
 
-app.listen(port, () => {
-    console.log('Server is up on port', port)
+app.use((error,req,res,next)=>{
+    res.status(400).json({
+        msg: error
+    })
+})
+
+
+const port = process.env.PORT;
+app.listen(port,function(err,done){
+    if(err){
+        console.log(err)
+    }else{
+        console.log("server is up on port", port); 
+    }
 })

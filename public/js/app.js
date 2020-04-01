@@ -1,4 +1,3 @@
-console.log('hello')
 function init(){
     const slides = document.querySelectorAll('.slide');
     const pages = document.querySelectorAll('.page');
