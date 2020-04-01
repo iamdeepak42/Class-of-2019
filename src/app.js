@@ -108,7 +108,7 @@ app.use((error,req,res,next)=>{
 })
 
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port,function(err,done){
     if(err){
         console.log(err)
