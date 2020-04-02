@@ -25,7 +25,7 @@
                     <h2>Title</h2>
                     <input type="text" name="title" class="no-outline" placeholder="Eg. Logic King, KUBH Snake" id="title">
                     <h2>Full Name</h2>
-                    <input type="text" name="fullname" class="no-outline" placeholder="Reborn into a Bajgain" id="fname">
+                    <input type="text" name="fullname" value='<% if(user){ %> <%=user.name.charAt(0).toUpperCase() + user.name.slice(1);%> <%}else{%><%}%>' class="no-outline" placeholder="Reborn into a Bajgain" id="fname">
                     <h2>Birthday</h2>
                     <input type="date" name="birthday" class="no-outline" id="bdate">
                     <h2>Gender</h2>
@@ -35,7 +35,7 @@
                         <option>Others</option>
                     </select>
                     <h2>Email</h2>
-                    <input type = "email" name="email" class="no-outline" size="30" id="email">
+                    <input type = "email" name="email" value='<% if(user){ %> <%=user.email;%> <%}else{%><%}%>' class="no-outline" size="30" id="email">
                     <h2>Favourite Bajgain Tale </h2>
                     <textarea name="tale" id="tales" cols="30" rows="10" id="tale"></textarea>
                     <input type="file" name="picture" accept="image/*" id="picture">

@@ -82,7 +82,8 @@ app.get('/login',(req,res,next)=>{
 
 app.get('/register',(req,res,next)=>{
     res.render('register',{
-        errMsg:null
+        errMsg:null,
+        success:null
     });
 })
 
@@ -102,7 +103,7 @@ app.use((req, res) => {
 })
 
 app.use((error,req,res,next)=>{
-    res.status(400).json({
+    res.status(400).render('error',{
         msg: error
     })
 })
