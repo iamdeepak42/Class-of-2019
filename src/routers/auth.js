@@ -1,5 +1,5 @@
 const Router = require('express').Router()
-const { postRegister,postLogin,forgotPassword,resetPassword,logout } = require('../controller/auth');
+const { postRegister,postLogin,forgotPassword,resetPassword,activate,logout } = require('../controller/auth');
 
 Router.post('/register',postRegister);
 
@@ -14,6 +14,8 @@ Router.get('/reset-password/:resetToken',(req,res,next)=>{
         resetToken: req.params.resetToken
     })
 })
+
+Router.get('/activate/:activeToken',activate);
 
 Router.get('/logout',logout);
 

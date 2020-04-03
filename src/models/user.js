@@ -22,11 +22,17 @@ const userSchema =  new Schema({
         enum: ['user','admin'],
         default: 'user'
     },
+    status:{
+        type: String,
+        enum:['active','inactive'],
+        default:'inactive'
+    },
     password:{
         type: String,
         required: [true,'Please provide a password'],
         select: false
     },
+    activeToken: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date
 },{

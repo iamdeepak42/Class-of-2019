@@ -32,11 +32,27 @@ module.exports = {
                 const salt = await bcrypt.genSalt(10);
                 req.body.password = await bcrypt.hash(req.body.password, salt);
                 map_user_req(newUser, req.body);
-                const saved = await newUser.save();
-                res.json(saved);
+                const activeToken = crypto.randomBytes(10).toString('hex');
+                newUser.activeToken = crypto
+                    .createHash('sha256')
+                    .update(activeToken)
+                    .digest('hex');
+                await newUser.save();
+                const activeURL = `${req.protocol}://${req.get('host')}/activate/${activeToken}`;
+                const html = `<h3><a href="${activeURL}">Click here</a> to activate your account</h3>`;
+                await sendMail({
+                    email: req.body.email,
+                    subject: 'activate account',
+                    html
+                })
+                res.render('register', {
+                    errMsg:  null,
+                    success: 'Email sent to activate your account. Please check your email'
+                });
             } else {
                 return res.render('register', {
-                    errMsg: 'password did not match'
+                    errMsg: 'password did not match',
+                    success:null
                 });
             }
         } catch (err) {
@@ -57,6 +73,11 @@ module.exports = {
             if (!isMatched) {
                 return res.render('login', {
                     errMsg: 'Invalid Password'
+                })
+            }
+            if (user.status === 'inactive') {
+                return res.render('login', {
+                    errMsg: 'Inactive account'
                 })
             }
             var token = createToken(user);
@@ -91,7 +112,7 @@ module.exports = {
                 subject: 'reset password',
                 html
             })
-            res.render('forgotPassword',{
+            res.render('forgotPassword', {
                 msg: 'Email Sent'
             });
         } catch (err) {
@@ -117,6 +138,11 @@ module.exports = {
                 user.resetPasswordExpire = undefined;
                 user.resetPasswordToken = undefined;
                 await user.save();
+                if(user.status=='inactive'){
+                    return res.render('login',{
+                        errMsg: 'Password reset success but Inactive account'
+                    })
+                }
                 var token = createToken(user);
                 res.cookie('token', token, {
                     expires: new Date(
@@ -133,9 +159,32 @@ module.exports = {
             next(err)
         }
     },
-    logout: (req,res,next)=>{
-        res.cookie('token','none',{
-            expires: new Date(Date.now()+10*1000),
+    activate:async(req,res,next)=>{
+       try{
+        const activeToken = req.params.activeToken;
+        const hashedToken = crypto.createHash('sha256').update(activeToken).digest('hex');
+        const user = await UserModel.findOne({
+            activeToken: hashedToken
+        }).select('+password');
+        user.status='active';
+        const saved = await user.save();
+        var token = createToken(user);
+        res.cookie('token', token, {
+            expires: new Date(
+                Date.now() + process.env.COOKIE_EXPIRE * 1000 * 60 * 60 * 24
+            ),
+            httpOnly: true
+        }).render('form', {
+            user
+        })
+       }catch(err){
+           next(err)
+       }
+
+    },
+    logout: (req, res, next) => {
+        res.cookie('token', 'none', {
+            expires: new Date(Date.now() + 10 * 1000),
             httpOnly: true
         })
         res.redirect('/login');
